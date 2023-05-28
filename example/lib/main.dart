@@ -146,22 +146,32 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
 
   void showDocument() async {
     final extractedDocument = await extractAsset(context, _documentPath);
-    await Navigator.of(context).push<dynamic>(MaterialPageRoute<dynamic>(
+    await Navigator.of(context).push<dynamic>(
+      MaterialPageRoute<dynamic>(
         builder: (_) => Scaffold(
-            extendBodyBehindAppBar: PlatformUtils.isAndroid(),
-            // Do not resize the the document view on Android or
-            // it won't be rendered correctly when filling forms.
-            resizeToAvoidBottomInset: PlatformUtils.isIOS(),
-            appBar: AppBar(),
-            body: SafeArea(
-                top: false,
-                bottom: false,
-                child: Container(
-                    padding: PlatformUtils.isCupertino(context)
-                        ? null
-                        : const EdgeInsets.only(top: kToolbarHeight),
-                    child: PspdfkitWidget(
-                        documentPath: extractedDocument.path))))));
+          extendBodyBehindAppBar: PlatformUtils.isAndroid(),
+          // Do not resize the the document view on Android or
+          // it won't be rendered correctly when filling forms.
+          resizeToAvoidBottomInset: PlatformUtils.isIOS(),
+          appBar: AppBar(),
+          body: SafeArea(
+            top: false,
+            bottom: false,
+            child: Container(
+              padding: PlatformUtils.isCupertino(context)
+                  ? null
+                  : const EdgeInsets.only(top: kToolbarHeight),
+              child: PspdfkitWidget(
+                documentPath: extractedDocument.path,
+                configuration: const {
+                  scrollOnEdgeTapEnabled: false,
+                },
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 
   void showDocumentPlatformStyle() async {

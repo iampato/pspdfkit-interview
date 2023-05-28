@@ -50,6 +50,7 @@ const String androidDefaultThemeResource = 'androidDefaultThemeResource';
 const String iOSLeftBarButtonItems = 'iOSLeftBarButtonItems';
 const String iOSRightBarButtonItems = 'iOSRightBarButtonItems';
 const String iOSAllowToolbarTitleChange = 'iOSAllowToolbarTitleChange';
+const String scrollOnEdgeTapEnabled = 'scrollOnEdgeTapEnabled';
 
 /// Thumbnail Options
 
