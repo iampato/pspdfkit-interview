@@ -176,7 +176,9 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                   : const EdgeInsets.only(top: kToolbarHeight),
               child: PspdfkitWidget(
                 documentPath: extractedDocument.path,
-                configuration: const {scrollOnEdgeTapEnabled: false},
+                configuration: const {
+                  scrollOnEdgeTapEnabled: false,
+                },
               ),
             ),
           ),
