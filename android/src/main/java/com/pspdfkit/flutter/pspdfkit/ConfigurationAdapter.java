@@ -75,6 +75,7 @@ class ConfigurationAdapter {
     private static final String ENABLE_DOCUMENT_EDITOR = "enableDocumentEditor";
     private static final String DARK_THEME_RESOURCE = "darkThemeResource";
     private static final String DEFAULT_THEME_RESOURCE = "defaultThemeResource";
+    private static final String SCROLL_ON_EDGE_TAP_ENABLED = "scrollOnEdgeTapEnabled";
 
     // Thumbnail Options
     private static final String SHOW_THUMBNAIL_BAR = "showThumbnailBar";
@@ -339,6 +340,10 @@ class ConfigurationAdapter {
             key = getKeyOfType(configurationMap, DEFAULT_THEME_RESOURCE, String.class);
             if (key != null) {
                 configureDefaultThemeRes((String) configurationMap.get(key), context);
+            }
+            key = getKeyOfType(configurationMap, SCROLL_ON_EDGE_TAP_ENABLED, Boolean.class);
+            if (key != null) {
+                configureScrollOnEdgeTapEnabled((Boolean) configurationMap.get(key));
             }
             key = getKeyOfType(configurationMap, SETTINGS_MENU_ITEMS, ArrayList.class);
             if (key != null) {
@@ -732,6 +737,10 @@ class ConfigurationAdapter {
 
     private void configureAutosaveEnabled(boolean autosaveEnabled) {
         configuration.autosaveEnabled(autosaveEnabled);
+    }
+
+    private void configureScrollOnEdgeTapEnabled(boolean scrollEnabled){
+        configuration.scrollOnEdgeTapEnabled(scrollEnabled);
     }
 
     private void configureMeasurementToolsEnabled(Boolean aBoolean) {
