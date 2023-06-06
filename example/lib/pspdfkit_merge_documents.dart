@@ -52,11 +52,8 @@ class _PdfMergeDocumentsState extends State<PdfMergeDocuments> {
                         documentPaths,
                         'merged-11.pdf',
                       );
-                      print(results);
                     } catch (e) {
-                      print('😆😆😆😆😆');
                       print(e);
-                      print('😆😆😆😆😆');
                     } finally {
                       setState(() {
                         _isLoaded = false;
