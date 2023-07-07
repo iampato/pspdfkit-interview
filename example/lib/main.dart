@@ -14,6 +14,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pspdfkit_example/pspdfkit_instant_collaboration_example.dart';
 import 'package:pspdfkit_example/pspdfkit_measurement_tools.dart';
+import 'package:pspdfkit_example/pspdfkit_merge_documents.dart';
 import 'package:pspdfkit_example/pspdfkit_pdf_generation_example.dart';
 import 'package:pspdfkit_example/pspdfkit_save_as_example.dart';
 import 'package:pspdfkit_example/utils/file_utils.dart';
@@ -39,6 +40,10 @@ const String _processedDocumentPath = 'PDFs/Embedded/PSPDFKit-processed.pdf';
 
 const String _pspdfkitFlutterPluginTitle =
     'PSPDFKit Flutter Plugin example app';
+
+const String _mergedDocumentsExample = 'Merged Documents Example';
+const String _mergedDocumentsSub =
+    'Opens a PDF Document with merged documents.';
 
 const String _basicExample = 'Basic Example';
 const String _basicPlatformStyleExample = 'Basic Example using Platform Style';
@@ -143,6 +148,14 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
       ThemeData(primaryColor: Colors.white, dividerColor: Colors.grey[800]);
   String _frameworkVersion = '';
   ThemeData currentTheme = lightTheme;
+
+  void showMergedDocuments() async {
+    await Navigator.of(context).push<dynamic>(
+      MaterialPageRoute<dynamic>(
+        builder: (_) => PdfMergeDocuments(),
+      ),
+    );
+  }
 
   void showDocument() async {
     final extractedDocument = await extractAsset(context, _documentPath);
@@ -688,6 +701,10 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
           child: Text(_pspdfkitWidgetExamples,
               style: currentTheme.textTheme.headline4?.copyWith(
                   fontSize: _fontSize, fontWeight: FontWeight.bold))),
+      ListTile(
+          title: const Text(_mergedDocumentsExample),
+          subtitle: const Text(_mergedDocumentsSub),
+          onTap: () => showMergedDocuments()),
       ListTile(
           title: const Text(_basicExample),
           subtitle: const Text(_basicExampleSub),

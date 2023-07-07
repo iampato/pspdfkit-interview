@@ -134,6 +134,11 @@
         }
 
 
+        key = @"scrollOnEdgeTapEnabled";
+        if (dictionary[key]){
+            builder.scrollOnEdgeTapEnabled = [dictionary[key] boolValue];
+        }
+
         // Thumbnail Options
 
         key = @"showThumbnailBar";

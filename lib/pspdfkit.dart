@@ -216,6 +216,19 @@ class Pspdfkit {
             : AndroidPermissionStatus.notDetermined;
   }
 
+  // merge documents
+  // requires list of document paths and output document name
+  // returns the path of the merged document path
+  static Future<String?> mergeDocuments(
+    List<String> documentPaths,
+    String outputDocumentName,
+  ) async {
+    return _channel.invokeMethod('mergeDocuments', <String, dynamic>{
+      'documentPaths': documentPaths,
+      'outputDocumentName': outputDocumentName
+    });
+  }
+
   /// Opens the Android settings.
   static Future<void> openAndroidSettings() async =>
       _channel.invokeMethod('openSettings');

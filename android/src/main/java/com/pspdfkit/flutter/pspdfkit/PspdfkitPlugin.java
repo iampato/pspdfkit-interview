@@ -616,6 +616,26 @@ public class PspdfkitPlugin
                 }
                 break;
             }
+            case "mergeDocuments": {
+                try{
+                    // get params from dart
+                    List<String> documents = call.argument("documentPaths");
+                    if (documents == null || documents.isEmpty()) {
+                        result.error("InvalidArgument", "Documents can neither be null or empty", null);
+                        return;
+                    }
+                    String outputFileName = call.argument("outputDocumentName");
+                    if (outputFileName == null) {
+                        result.error("InvalidArgument", "Output file name is a required parameter", null);
+                        return;
+                    }
+                    PspdfkitPdfMerger pspdfkitPdfMerger = new PspdfkitPdfMerger(activityPluginBinding.getActivity().getApplicationContext());
+                    pspdfkitPdfMerger.mergePdf(documents,outputFileName,result);
+                    break;
+                }catch(Exception e){
+                    result.error("MergeDocuments", e.getMessage(), null);
+                }
+            }
             default:
                 result.notImplemented();
                 break;
